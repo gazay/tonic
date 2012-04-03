@@ -1,8 +1,8 @@
 # Tonic gem — add some tonus for your github pages
 
-## This gem not ready yet! I'll tell you here with travis-ci, when you can try it.
+### This gem not ready yet! I'll tell you here with travis-ci, when you can try it.
 
-## I tell you - this is pre-beta. There are no tests!!! Watch it but don't use it yet ;)
+### I tell you - this is pre-beta. There are no tests!!! Watch it but don't use it yet ;)
 
 ### Build Status ![http://travis-ci.org/gazay/gon](https://secure.travis-ci.org/gazay/tonic.png)
 

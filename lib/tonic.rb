@@ -1,4 +1,4 @@
-require 'github'
+require 'tonic/template'
 
 module Tonic
   class << self

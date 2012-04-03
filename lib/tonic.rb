@@ -56,7 +56,7 @@ module Tonic
     end
 
     def sh(*command)
-      GitHub::Command::Shell.new(*command).run
+      Tonic::Shell.run(*command)
     end
 
   end

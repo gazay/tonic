@@ -3,8 +3,18 @@ require 'tonic/template'
 module Tonic
   class << self
 
-    def activate
+    def activate(*args)
       raise "I told you - it's not working yet. Bear a little patience"
+      if args.empty?
+        gh_pages
+      elsif args.first == 'template'
+        generate_template
+      elsif args.first == 'push'
+        push_pages
+      end
+    end
+
+    def gh_pages
       if branch_exists?
         raise 'You shall no pass. First you should delete gh-pages branch'
       end
@@ -22,6 +32,10 @@ module Tonic
       else
         puts 'Forget about it bro'
       end
+    end
+
+    def generate_template
+      Tonic::Template.activate
     end
 
     private

@@ -5,4 +5,8 @@ $LOAD_PATH.unshift lib_dir if File.directory?(lib_dir)
 
 require 'tonic'
 
-Tonic.activate
+if ARGV.empty?
+  Tonic.activate
+else ARGV.first == 'push'
+  Tonic.push_pages
+end

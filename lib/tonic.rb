@@ -16,7 +16,7 @@ module Tonic
     private
 
     def branch_exists?
-      branches = command.git 'branch'
+      branches = sh 'git branch'
       branches.any? { |it| it =~ /gh-pages/ }
     end
 

@@ -46,7 +46,7 @@ module Tonic
 
     def commit_changes
       sh "git add ."
-      sh "git commit -m 'Init github pages'"
+      sh "git commit -am 'Init github pages'"
     end
 
     def copy_template

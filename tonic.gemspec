@@ -20,5 +20,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib", "bin"]
   s.add_dependency "github"
 
+  s.add_development_dependency "rspec"
   s.add_development_dependency "rake"
 end

@@ -4,6 +4,7 @@ module Tonic
   class << self
 
     def activate
+      raise "I told you - it's not working yet. Bear a little patience"
       if branch_exists?
         raise 'You shall no pass. First you should delete gh-pages branch'
       end
@@ -15,6 +16,7 @@ module Tonic
     end
 
     def push_pages
+      raise "I told you - it's not working yet. Bear a little patience"
       if in_gh_pages_branch?
         sh 'git push -f origin gh-pages'
       else

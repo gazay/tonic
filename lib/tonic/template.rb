@@ -5,6 +5,12 @@ module Tonic
       def activate
       end
 
+      private
+
+      def sh(*command)
+        Tonic::Shell.run(*command)
+      end
+
     end
   end
 end

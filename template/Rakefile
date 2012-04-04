@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'pathname'
 require 'rake'
 require 'bundler'
 Bundler::GemHelper.install_tasks
@@ -9,15 +10,25 @@ require 'haml'
 
 require 'compass'
 
-ROOT = File.dirname(File.expand_path('./',__FILE__))
-ASSETS_PATH = File.expand_path('./assets', __FILE__)
+ROOT = Pathname(__FILE__).dirname
+COMPILED_PATHS = {
+                   # TODO: Here we need configurable params
+                   :img => ROOT.join('images/'),
+                   :js => ROOT.join('javascripts/'),
+                   :html => ROOT,
+                   :css => ROOT.join('stylesheets/')
+                 }
 
-COFFEE = File.expand_path('./coffee', ASSETS_PATH)
-TEMPLATES = File.expand_path('./templates', ASSETS_PATH)
-SASS = File.expand_path('./sass', ASSETS_PATH)
-IMAGES = File.expand_path('./images', ASSETS_PATH)
+ASSETS_ROOT = ROOT.join('assets/')
+TEMPLATE_PATHS = {
+                   :coffee => ASSETS_ROOT.join('coffee/'),
+                   :templates => ASSETS_ROOT.join('templates/'),
+                   :layout => ASSETS_ROOT.join('templates/layout/'),
+                   :sass => ASSETS_ROOT.join('sass/'),
+                   :images => ASSETS_ROOT.join('images/')
+                 }
 
-Compass.configuration.images_path = IMAGES
+Compass.configuration.images_path = TEMPLATE_PATHS['images']
 
 class AssetBuilder
 
@@ -28,7 +39,7 @@ class AssetBuilder
   def assets
     @sprockets ||= begin
       Sprockets::Environment.new(ROOT) do |env|
-        env.append_path(TEMPLATES)
+        TEMPLATE_PATHS.values.each { |it| env.append_path it }
 
         compass = Gem.loaded_specs['compass'].full_gem_path
         env.append_path("#{compass}/frameworks/compass/stylesheets")
@@ -40,12 +51,34 @@ class AssetBuilder
     end
   end
 
-  def render
+  def render(haml, &block)
+    options = { format: :html5 }
+    options[:ugly] = true if @env == :production
+    Haml::Engine.new(haml, options).render(self, &block)
+  end
 
+  def production?
+    @env == :production
+  end
+
+end
+
+environment = nil
 
 desc 'Build all assets'
 task :build do |t, args|
+  environment ||= :production
+
   puts 'building asset files'
+
+  layout = File.new(File.join(TEMPLATES_LAYOUT, 'layout.html.haml')).read
+
+  helper = Helper.new(environment)
+
+  Dir.glob(File.join(TEMPLATES_PATHS['templates']), '*').each do |template|
+    next if File.basename(template) =~ /^layout\./
+
+    path = File.
 
 
 

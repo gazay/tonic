@@ -7,9 +7,9 @@ module Tonic
       end
 
       def push_pages
-        raise "I told you - it's not working yet. Bear a little patience"
+        abort "I told you - it's not working yet. Bear a little patience"
         if in_gh_pages_branch?
-          sh 'git push -f origin gh-pages'
+          exec 'git push -f origin gh-pages'
         else
           puts 'Forget about it bro'
         end
@@ -24,7 +24,7 @@ module Tonic
 
       def gh_pages
         if branch_exists?
-          raise 'You shall no pass. First you should delete gh-pages branch'
+          abort 'You shall no pass. First you should delete gh-pages branch'
         end
 
         puts 'Do you really want to create gh-pages branch with tonic? [y/n]'

@@ -4,7 +4,7 @@ module Tonic
   class << self
 
     def activate(*args)
-      raise "I told you - it's not working yet. Bear a little patience"
+      abort "I told you - it's not working yet. Bear a little patience"
       deal_with_args(*args)
     end
 
@@ -18,7 +18,7 @@ module Tonic
       elsif want_to_push?(args)
         Tonic::GhPages.push_pages
       else
-        raise ArgumentError.new 'Strange argument you sent to tonic'
+        abort ArgumentError.new 'Strange argument you sent to tonic'
       end
     end
 

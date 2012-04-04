@@ -108,6 +108,27 @@ task :build do |t, args|
   print "\n"
 end
 
+desc 'Rebuild files on every changes'
+task :watch do
+  environment ||= :development
+  Rake::Task['build'].execute
+
+  def rebuild
+    print 're'
+    Rake::Task['build'].execute
+  rescue Exception => e
+    puts
+    puts "ERROR: #{e.message}"
+  end
+
+  require 'fssm'
+  FSSM.monitor(ROOT, '{i18n,layout,easings.yml}/**/*') do
+    update { rebuild }
+    delete { rebuild }
+    create { rebuild }
+  end
+end
+
 ### Rake tasks ###
 
 desc 'Run all tests by default'

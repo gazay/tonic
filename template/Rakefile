@@ -9,6 +9,7 @@ require 'haml'
 
 require 'compass'
 
+ROOT = File.dirname(File.expand_path('./',__FILE__))
 ASSETS_PATH = File.expand_path('./assets', __FILE__)
 
 COFFEE = File.expand_path('./coffee', ASSETS_PATH)
@@ -18,9 +19,35 @@ IMAGES = File.expand_path('./images', ASSETS_PATH)
 
 Compass.configuration.images_path = IMAGES
 
+class AssetBuilder
+
+  def initialize(env)
+    @env = env
+  end
+
+  def assets
+    @sprockets ||= begin
+      Sprockets::Environment.new(ROOT) do |env|
+        env.append_path(TEMPLATES)
+
+        compass = Gem.loaded_specs['compass'].full_gem_path
+        env.append_path("#{compass}/frameworks/compass/stylesheets")
+
+        if @env == :production
+          env.js_compressor = Uglifier.new(copyright: false)
+        end
+      end
+    end
+  end
+
+  def render
+
+
 desc 'Build all assets'
 task :build do |t, args|
   puts 'building asset files'
+
+
 
 end
 

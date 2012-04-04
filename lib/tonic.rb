@@ -13,14 +13,12 @@ module Tonic
     def deal_with_args(*args)
       if args.empty?
         Tonic::GhPages.activate
+      elsif want_to_create?(args)
+        Tonic::Template.create args[1]
+      elsif want_to_push?(args)
+        Tonic::GhPages.push_pages
       else
-        if want_to_create?(args)
-          Tonic::Template.create args[1]
-        elsif want_to_push?(args)
-          Tonic::GhPages.push_pages
-        else
-          raise ArgumentError.new 'Strange argument you sent to tonic'
-        end
+        raise ArgumentError.new 'Strange argument you sent to tonic'
       end
     end
 
@@ -31,5 +29,6 @@ module Tonic
     def want_to_push?(args)
       args[0] == 'push'
     end
+
   end
 end

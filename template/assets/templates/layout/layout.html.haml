@@ -1,0 +1,36 @@
+!!!
+%html
+  %head
+    %meta( charset="UTF-8" )
+    %title= "Thank you for using tonic!"
+    %meta( name="description" content="tonic gem gh-pages" )
+    %script( src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery#{production? ? '.min' : ''}.js" )
+    %script= assets['application.js']
+    %link( rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Mono" )
+    %style= assets['application.css']
+  %body
+    .root
+      = yield
+
+    // Octocat corner
+    %a.open-source( href="https://github.com/gazay/tonic" )
+      .crop
+        .background
+        %pre.source
+          %code
+            :preserve
+              %html
+                %meta( charset="UTF-8" )
+                %title= title
+                %script
+        .source-crop
+        .octocat
+        .rotator
+          .corner
+            .title
+              .shadow
+            .border
+            .text open source
+      .translate Help me to make this thing better!
+
+    %script= assets['action.js']

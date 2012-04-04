@@ -29,7 +29,7 @@ TEMPLATE_PATHS = {
                    :images => ASSETS_ROOT.join('images/')
                  }
 
-Compass.configuration.images_path = TEMPLATE_PATHS[:images]
+Compass.configuration.images_path = TEMPLATE_PATHS[:images].to_s
 
 class Pathname
   def glob(pattern, &block)
@@ -78,7 +78,7 @@ desc 'Build all assets'
 task :build do |t, args|
   environment ||= :production
 
-  puts 'building asset files'
+  puts 'build'
 
   layout = TEMPLATE_PATHS[:layout].join('layout.html.haml').read
 
@@ -120,7 +120,7 @@ task :watch do
   end
 
   require 'fssm'
-  FSSM.monitor(ROOT, '{i18n,layout,easings.yml}/**/*') do
+  FSSM.monitor(ASSETS_ROOT, '**/*') do
     update { rebuild }
     delete { rebuild }
     create { rebuild }

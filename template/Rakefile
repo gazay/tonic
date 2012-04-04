@@ -5,8 +5,6 @@ require 'rubygems'
 require 'pathname'
 require 'rake'
 require 'bundler'
-Bundler::GemHelper.install_tasks
-
 require 'uglifier'
 require 'sprockets'
 require 'haml'
@@ -92,12 +90,12 @@ task :build do |t, args|
     path = template.
       relative_path_from(TEMPLATE_PATHS[:templates]).
       sub_ext('').sub_ext('').to_s
-    file = ROOT.join(path + ".#{locale.code}.html")
+    file = ROOT.join(path + ".html")
 
     helper.path = path
 
     file.open('w') do |html|
-      html << helper.render(layout) { helper.render(haml.read) }
+      html << helper.render(layout) { helper.render(template.read) }
     end
 
     `gzip --best -c #{file} > #{file}.gz` if helper.production?

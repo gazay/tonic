@@ -19,7 +19,7 @@ module Tonic
       def copy_template(new_path = "")
         path =  File.expand_path('../../template', __FILE__)
         puts path
-        sh "cp -r #{path}/* ./#{new_path}"
+        sh "cp -r #{path}/(.*|*) ./#{new_path}"
       end
 
       private

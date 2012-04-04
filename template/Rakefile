@@ -1,3 +1,6 @@
+# Most of all of this code from @ai (Andrey Sitnik) one-page site engine
+# https://github.com/ai/easings.net
+
 require 'rubygems'
 require 'pathname'
 require 'rake'
@@ -28,9 +31,17 @@ TEMPLATE_PATHS = {
                    :images => ASSETS_ROOT.join('images/')
                  }
 
-Compass.configuration.images_path = TEMPLATE_PATHS['images']
+Compass.configuration.images_path = TEMPLATE_PATHS[:images]
 
-class AssetBuilder
+class Pathname
+  def glob(pattern, &block)
+    Pathname.glob(self.join(pattern), &block)
+  end
+end
+
+class Helper
+
+  attr_accessor :path
 
   def initialize(env)
     @env = env
@@ -71,20 +82,31 @@ task :build do |t, args|
 
   puts 'building asset files'
 
-  layout = File.new(File.join(TEMPLATES_LAYOUT, 'layout.html.haml')).read
+  layout = TEMPLATE_PATHS[:layout].join('layout.html.haml').read
 
-  helper = Helper.new(environment)
+  helper = Helper.new environment
 
-  Dir.glob(File.join(TEMPLATES_PATHS['templates']), '*').each do |template|
-    next if File.basename(template) =~ /^layout\./
+  TEMPLATE_PATHS[:templates].glob('**/*.html.haml') do |template|
+    next if template.basename.to_s == 'layout.html.haml'
 
-    path = File.
+    path = template.
+      relative_path_from(TEMPLATE_PATHS[:templates]).
+      sub_ext('').sub_ext('').to_s
+    file = ROOT.join(path + ".#{locale.code}.html")
 
+    helper.path = path
 
+    file.open('w') do |html|
+      html << helper.render(layout) { helper.render(haml.read) }
+    end
 
+    `gzip --best -c #{file} > #{file}.gz` if helper.production?
+
+    print '.'
+  end
+
+  print "\n"
 end
-
-
 
 ### Rake tasks ###
 

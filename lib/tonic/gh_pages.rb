@@ -27,10 +27,13 @@ module Tonic
           raise 'You shall no pass. First you should delete gh-pages branch'
         end
 
-        create_branch
-        remove_all_files
-        copy_template
-        commit_changes
+        puts 'Do you really want to create gh-pages branch with tonic? [y/n]'
+        if gets.chomp =~ /y/i
+          create_branch
+          remove_all_files
+          Template.create
+          commit_changes
+        end
       end
 
       def branch_exists?
@@ -51,12 +54,6 @@ module Tonic
       def commit_changes
         sh "git add ."
         sh "git commit -am 'Init github pages'"
-      end
-
-      def copy_template
-        path =  File.expand_path('../../template', __FILE__)
-        puts path
-        sh "cp -r #{path}/* ./"
       end
 
       def sh(*command)

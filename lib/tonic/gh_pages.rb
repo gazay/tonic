@@ -7,7 +7,6 @@ module Tonic
       end
 
       def push_pages
-        abort "I told you - it's not working yet. Bear a little patience"
         if in_gh_pages_branch?
           exec 'git push -f origin gh-pages'
         else

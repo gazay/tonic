@@ -1,6 +1,8 @@
 # Implementation of sh from github-gem
 # https://github.com/defunkt/github-gem
 
+require 'open3'
+
 module Tonic
   class Shell < String
 

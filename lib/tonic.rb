@@ -1,16 +1,18 @@
+require 'tonic/gh_pages.rb'
 require 'tonic/template'
+require 'tonic/shell'
+require 'tonic/config'
 
 module Tonic
   class << self
 
-    def activate(*args)
-      abort "I told you - it's not working yet. Bear a little patience"
-      deal_with_args(*args)
+    def activate(args)
+      deal_with_args(args)
     end
 
     private
 
-    def deal_with_args(*args)
+    def deal_with_args(args)
       if args.empty?
         Tonic::GhPages.activate
       elsif want_to_create?(args)
@@ -18,7 +20,7 @@ module Tonic
       elsif want_to_push?(args)
         Tonic::GhPages.push_pages
       else
-        abort ArgumentError.new 'Strange argument you sent to tonic'
+        raise ArgumentError.new 'Strange argument you sent to tonic'
       end
     end
 

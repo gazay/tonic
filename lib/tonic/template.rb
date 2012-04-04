@@ -17,9 +17,10 @@ module Tonic
       protected
 
       def copy_template(new_path = "")
-        path =  File.expand_path('../../template', __FILE__)
+        path =  File.expand_path('../../../template', __FILE__)
         puts path
-        sh "cp -r #{path}/(.*|*) ./#{new_path}"
+        sh "cp -r #{path}/.* ./#{new_path}"
+        sh "cp -r #{path}/* ./#{new_path}"
       end
 
       private
@@ -30,7 +31,7 @@ module Tonic
 
       def log_files
         puts 'Created files:'
-        Dir[File.expand_path '../template/**/*', __FILE__].each {|it| puts it }
+        Dir[File.expand_path '../../../template/**/*', __FILE__].each {|it| puts it }
       end
 
       def bundle_install(name = "")

@@ -22,7 +22,7 @@ module Tonic
       end
 
       def gh_pages
-        you_are_in_repo?
+        are_you_in_repo?
 
         if branch_exists?
           abort 'You shall no pass. First you should delete gh-pages branch'
@@ -38,7 +38,7 @@ module Tonic
         end
       end
 
-      def you_are_in_repo?
+      def are_you_in_repo?
         check = sh('git status').to_s
         if check =~ /Not a git repository/
           abort "You are not in git repo. If you want to create tonic-template write `tonic new my_app`"

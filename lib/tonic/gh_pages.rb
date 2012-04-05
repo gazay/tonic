@@ -2,8 +2,8 @@ module Tonic
   module GhPages
     class << self
 
-      def activate
-        gh_pages
+      def activate(template = nil)
+        gh_pages(template)
       end
 
       def push_pages
@@ -21,7 +21,7 @@ module Tonic
         branches.lines.any? { |it| it =~ /\* gh-pages/ }
       end
 
-      def gh_pages
+      def gh_pages(template = nil)
         are_you_in_repo?
 
         if branch_exists?
@@ -33,8 +33,20 @@ module Tonic
           check_status
           create_branch
           remove_all_files
-          Template.create
+          create_template(template)
           commit_changes
+        end
+      end
+
+      def create_template(template = nil)
+        case template
+        when 'middleman'
+          sh 'middleman init ./'
+        when 'jekyll'
+          puts 'I will add integration with Jekyll later, now I will install tonic-template'
+          Template.create
+        else
+          Template.create
         end
       end
 

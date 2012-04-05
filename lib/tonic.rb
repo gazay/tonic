@@ -13,12 +13,12 @@ module Tonic
     private
 
     def deal_with_args(args)
-      if args.empty?
-        Tonic::GhPages.activate
+      if want_to_push?(args)
+        Tonic::GhPages.push_pages
+      elsif want_gh_pages?
+        Tonic::GhPages.activate(args[0])
       elsif want_to_create?(args)
         Tonic::Template.create args[1]
-      elsif want_to_push?(args)
-        Tonic::GhPages.push_pages
       else
         raise ArgumentError.new 'Strange argument you sent to tonic'
       end
@@ -30,6 +30,10 @@ module Tonic
 
     def want_to_push?(args)
       args[0] == 'push'
+    end
+
+    def wand_gh_pages?
+      args.empty? or %w(middleman jekyll).include?(args[0])
     end
 
   end

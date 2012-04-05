@@ -1,4 +1,4 @@
-# Tonic gem — add some tonus for development your gh-pages :)
+# Tonic gem — add some tonus in development your gh-pages :)
 
 ### This is beta now
 

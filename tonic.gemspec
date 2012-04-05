@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = ['gazay']
   s.email       = ['alex.gaziev@gmail.com']
   s.homepage    = "https://github.com/gazay/tonic"
-  s.summary     = %q{Create github pages easy with Sass, Haml/Slim, Coffee.}
+  s.summary     = %q{Create one-page apps easy with Sass, Haml/Compass, Coffee.}
   s.description = %q{You don't need to write your github pages in html and css anymore - now it's simple to use your favorite technologies with tonic!}
 
   s.rubyforge_project = "tonic"

@@ -6,10 +6,12 @@
 
 If you want to create your simple static application,
 and want to use for that sass-compass/haml/coffee/something
+
 THIS GEM FOR YOU
 
 If you want to easily create custom gh-pages for your application,
 and again - want to use for that the same technologies
+
 THIS GEM TOTALY FOR YOU
 
 ## Why?
@@ -89,10 +91,10 @@ $ tonic
 ```
 
 It will ask you - do you really want blahblahblah. You say `y` and there is it!
-Will be created branch gh-pages, then you checkout there and remove from there all files.
-Then tonic will copy tonic-template to this branch and run bundle install.
+Will be created branch gh-pages, then tonic checkout you there and remove from there all files.
+Then it will copy tonic-template to this branch and run bundle install.
 
-Then you just work with this template like with ordinary tonic-template.
+And you can work with this template like with ordinary tonic-template.
 
 When you want to push your gh-pages branch to github, just write:
 
@@ -111,10 +113,15 @@ $ git push -f origin gh-pages
 In template used next gems for make it work:
 
 [rake](https://github.com/jimweirich/rake)
+
 [bundler](https://github.com/carlhuda/bundler)
+
 [uglifier](https://github.com/lautis/uglifier)
+
 [sprockets](https://github.com/sstephenson/sprockets)
+
 [haml](https://github.com/nex3/haml)
+
 [compass](https://github.com/chriseppstein/compass)
 
 Lot of code for rakefile of template and for octocat in test page

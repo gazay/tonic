@@ -3,24 +3,6 @@
 
 @import 'base'
 
-body
-  text-align: center
-  background: white
-  color: black
-  font-size: 16px
-  font-family: sans-serif
-
-a
-  color: darkGray
-  &:hover
-    color: red
-
-.tonic-logo
-  margin: 50px auto 0 auto
-  width: +image-width("tonic.png")
-  height: +image-height("tonic.png")
-  background: inline-image("tonic.png")
-
 // Octocat corner styles
 .open-source
   display: block
@@ -63,7 +45,7 @@ a
     position: absolute
     width: 120px
     height: 120px
-    background: white
+    background: #DDD
     top: 22px
     left: -50px
     +rotate(45deg)
@@ -146,3 +128,284 @@ a
         +rotate(180deg)
       .translate
         opacity: 1
+
+
+// bottle with ruby
+
+*
+  padding: 0
+  margin: 0
+  border: none
+
+@-webkit-keyframes spaceboots
+  0%
+    -webkit-transform: translate(2px, 1px)
+    -webkit-transform: rotate(0deg)
+  10%
+    -webkit-transform: translate(-1px, -2px)
+    -webkit-transform: rotate(-1deg)
+  20%
+    -webkit-transform: translate(-3px, 0px)
+    -webkit-transform: rotate(1deg)
+  30%
+    -webkit-transform: translate(0px, 2px)
+    -webkit-transform: rotate(0deg)
+  40%
+    -webkit-transform: translate(1px, -1px)
+    -webkit-transform: rotate(1deg)
+  50%
+    -webkit-transform: translate(-1px, 2px)
+    -webkit-transform: rotate(-1deg)
+  60%
+    -webkit-transform: translate(-3px, 1px)
+    -webkit-transform: rotate(0deg)
+  70%
+    -webkit-transform: translate(2px, 1px)
+    -webkit-transform: rotate(-1deg)
+  80%
+    -webkit-transform: translate(-1px, -1px)
+    -webkit-transform: rotate(1deg)
+  90%
+    -webkit-transform: translate(2px, 2px)
+    -webkit-transform: rotate(0deg)
+  100%
+    -webkit-transform: translate(1px, -2px)
+    -webkit-transform: rotate(-1deg)
+
+@-webkit-keyframes water
+  0%
+    -webkit-transform: translate(20px, 10px)
+  10%
+    -webkit-transform: translate(-10px, -20px)
+  20%
+    -webkit-transform: translate(-25px, 0px)
+  30%
+    -webkit-transform: translate(0px, 20px)
+  40%
+    -webkit-transform: translate(10px, -10px)
+  50%
+    -webkit-transform: translate(-10px, 20px)
+  60%
+    -webkit-transform: translate(-25px, 10px)
+  70%
+    -webkit-transform: translate(20px, 11px)
+  80%
+    -webkit-transform: translate(-10px, -10px)
+  90%
+    -webkit-transform: translate(20px, 20px)
+  100%
+    -webkit-transform: translate(20px, 10px)
+
+@-webkit-keyframes bubbleFloat
+  0%
+    bottom: 50px
+  10%
+    +opacity(0)
+  20%
+    +opacity(1)
+  33%
+    bottom: 340px
+    left: 170px
+  35%
+    +opacity(0)
+  100%
+    bottom: 50px
+    +opacity(0)
+
+@-webkit-keyframes bubbleFloat2
+  0%
+    bottom: 40px
+  10%
+    +opacity(0)
+  25%
+    +opacity(1)
+  33%
+    bottom: 320px
+    left: 150px
+  35%
+    +opacity(0)
+  100%
+    bottom: 40px
+    +opacity(0)
+
+@-webkit-keyframes bubbleFloat3
+  0%
+    bottom: 40px
+  10%
+    +opacity(0)
+  25%
+    +opacity(1)
+  33%
+    bottom: 320px
+    left: 135px
+  35%
+    +opacity(0)
+  100%
+    bottom: 40px
+    +opacity(0)
+
+@-webkit-keyframes bubbleFloat4
+  0%
+    bottom: 40px
+  10%
+    +opacity(0)
+  25%
+    +opacity(1)
+  33%
+    bottom: 320px
+    left: 120px
+  35%
+    +opacity(0)
+  100%
+    bottom: 40px
+    +opacity(0)
+
+@-webkit-keyframes bubbleFloat5
+  0%
+    bottom: 40px
+  10%
+    +opacity(0)
+  25%
+    +opacity(1)
+  33%
+    bottom: 320px
+    left: 150px
+  35%
+    +opacity(0)
+  100%
+    bottom: 40px
+    +opacity(0)
+
+div
+  display: block
+
+body
+  font-family: "BebasNeueRegular", "Arial Narrow", Arial, sans-serif
+  font-size: 15px
+  color: #333
+  line-height: 1.2
+  background: #DDD
+  padding: 0
+  margin: 0
+  display:  block
+  .container
+    position: relative
+    width: 100%
+    text-align: center
+    .header
+      padding: 30px 30px 0 30px
+      margin: 0 20px 10px 20px
+      position: relative
+      display: block
+      h1
+        font-size: 30px
+        text-transform: uppercase
+        line-height: 1.5
+        position: relative
+        font-weight: 400
+        text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7)
+        padding-bottom: 5px
+        margin: 0 20px
+      h2
+        font-size: 16px
+        padding: 10px 0
+    .content
+      position: relative
+      width: 800px
+      margin: 30px auto
+      display: block
+      text-align: center
+      .anime
+        display: block
+        &:hover
+          .shake
+            -webkit-animation-name: spaceboots
+            -webkit-animation-duration: 0.9s
+            -webkit-transform-origin: 50% 50%
+            -webkit-animation-iteration-count: infinite
+            -webkit-animation-timing-function: linear
+          .ruby
+            -webkit-animation-name: water
+            -webkit-animation-duration: 6s
+            -webkit-transform-origin: 50% 50%
+            -webkit-animation-iteration-count: infinite
+            -webkit-animation-timing-function: linear
+        .ruby
+          position: relative
+          display: inline-block
+          top: 350px
+          right: 50px
+        .shake
+          display: inline-block
+          position: relative
+        .action
+          width: 300px
+          height: 450px
+          margin: 0 auto
+          position: relative
+          top: -450px
+          .bubble
+            width: 3px
+            height: 3px
+            position: absolute
+            display: block
+            left: 105px
+            bottom: 110px
+            +border-radius(20px)
+            +opacity(0.5)
+            background: black
+            -webkit-animation-name: bubbleFloat
+            -webkit-animation-duration: 3s
+            -webkit-animation-iteration-count: infinite
+          .bubble2
+            width: 3px
+            height: 3px
+            position: absolute
+            display: block
+            left: 90px
+            bottom: 80px
+            +border-radius(20px)
+            +opacity(0.5)
+            background: black
+            -webkit-animation-name: bubbleFloat2
+            -webkit-animation-duration: 3.2s
+            -webkit-animation-iteration-count: infinite
+          .bubble3
+            width: 3px
+            height: 3px
+            position: absolute
+            display: block
+            left: 80px
+            bottom: 76px
+            +border-radius(20px)
+            +opacity(0.5)
+            background: black
+            -webkit-animation-name: bubbleFloat3
+            -webkit-animation-duration: 3.6s
+            -webkit-animation-iteration-count: infinite
+          .bubble4
+            width: 3px
+            height: 3px
+            position: absolute
+            display: block
+            left: 70px
+            bottom: 70px
+            +border-radius(20px)
+            +opacity(0.5)
+            background: black
+            -webkit-animation-name: bubbleFloat4
+            -webkit-animation-duration: 2.5s
+            -webkit-animation-iteration-count: infinite
+          .bubble5
+            width: 3px
+            height: 3px
+            position: absolute
+            display: block
+            left: 85px
+            bottom: 85px
+            +border-radius(20px)
+            +opacity(0.5)
+            background: black
+            -webkit-animation-name: bubbleFloat5
+            -webkit-animation-duration: 2s
+            -webkit-animation-iteration-count: infinite

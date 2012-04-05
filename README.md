@@ -94,6 +94,18 @@ Then tonic will copy tonic-template to this branch and run bundle install.
 
 Then you just work with this template like with ordinary tonic-template.
 
+When you want to push your gh-pages branch to github, just write:
+
+```bash
+$ tonic push
+```
+
+Or oldschool:
+
+```bash
+$ git push -f origin gh-pages
+```
+
 ## What?
 
 In template used next gems for make it work:

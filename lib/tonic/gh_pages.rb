@@ -33,12 +33,12 @@ module Tonic
           check_status
           create_branch
           remove_all_files
-          create_template(template)
+          create template
           commit_changes
         end
       end
 
-      def create_template(template = nil)
+      def create(template = nil)
         case template
         when 'middleman'
           sh 'middleman init ./'

@@ -1,18 +1,21 @@
-# Tonic gem — add some tonus for your development :)
+# Tonic gem — add some tonus for development your gh-pages :)
 
 ### This is beta now
 
 ### Build Status ![http://travis-ci.org/gazay/gon](https://secure.travis-ci.org/gazay/tonic.png)
 
-If you want to create your simple static application,
-and want to use for that sass-compass/haml/coffee/something
-
-THIS GEM FOR YOU
+This gem supports [middleman](https://github.com/middleman/middleman)
+and will support in near future [jekyll](https://github.com/mojombo/jekyll) for generate template of your site.
 
 If you want to easily create custom gh-pages for your application,
 and again - want to use for that the same technologies
 
 THIS GEM TOTALY FOR YOU
+
+If you want to create your simple static application,
+and want to use for that sass-compass/haml/coffee/something
+
+THIS GEM FOR YOU
 
 ## Why?
 
@@ -20,18 +23,11 @@ Because make html as html is too mainstream. Now you should know all
 benefits of using haml, coffee and sass. And of course other template engines for
 other or the same purposes. You should know and I think you love it.
 
-And what will you do if you need to create simple, one-page application?
-With static html, with not too big js and styles?
-Maybe I don't know something, but you sigh maybe about your
-lovely haml/sass/coffee and go to do all this stuff like in nineteens.
+There a lot of cool static site generators, from jekyll to this one :)
+But no one give to you so simple ui (maybe middleman, but tonic knows how to do gh-pages branch right;)
 
-Because for one single page you will not to run compass, compile each coffeescript and haml file.
-You just sit and write pure html/css/js.
-
-So I thought about it a little and made this gem.
-
-Ar first it was gem just for create gh-pages branch with some content (because I'm too lazy sometimes).
-But then I decided to do more - and now it will do all stuff for you. You just need write some nice code :)
+You can choose with what template you want to develop your site:
+tonic, middleman or jekyll (jekyll support not yet ready)
 
 
 ## How?
@@ -41,15 +37,48 @@ This gem have two functions inside:
   1. tonic-template
   2. tonic for gh-pages
 
-Tonic-template more important here, because it is that thing for easy developing!
+Tonic-template it is that thing for easy developing.
 Tonic-template uses for it's work several gems, like template engines, rake and sprockets.
 Sprockets make this template look like rails assets folder.
 
 You don't need every time run some command in terminal or push somewhere.
 You need just write `rake watch`
 
-Tonic for gh-pages is simplier, because it uses only ruby-lang libraries like open3 and pathname,
-and it's general purpose - is create new branch `gh-pages`, copy there tonic-template and run bundler.
+Tonic for gh-pages is simplier, because it uses only ruby-lang libraries like open3 and pathname and dependent on jekyll and middleman,
+and it's general purpose - is create new branch `gh-pages`, init there choosen template and run bundler if it's needed.
+
+### Using tonic for gh-pages
+
+You should be in your repo, for which you want to create gh-pages.
+You shouldn't have in this repo this branch already.
+So you just run:
+
+```bash
+$ gem install tonic
+$ tonic [middleman|jekyll]
+```
+
+It will ask you - do you really want blahblahblah. You say `y` and there is it!
+Will be created branch gh-pages, then tonic checkout you there and remove from there all (not dot-) files.
+Then it will copy choosen template to this branch and run bundle install if it's needed.
+
+And you can work with this template.
+
+When you want to push your gh-pages branch to github, just write:
+
+```bash
+$ tonic push
+```
+
+Or oldschool:
+
+```bash
+$ git push -f origin gh-pages
+```
+
+Example you can see on [gh-pages for tonic](http://gazay.github.com/tonic)
+
+And what inside template in [gh-pages branch](https://github.com/gazay/tonic/tree/gh-pages)
 
 ### Using tonic-template
 
@@ -76,45 +105,9 @@ Then you can do two things:
   bundle exec rake watch
   ```
 
-Later I will add comands with tonic, but now I tired :)
-And I want to add comands to open needed files from terminal.
-
-### Using tonic for gh-pages
-
-You should be in your repo, for which you want to create gh-pages.
-You shouldn't have in this repo this branch already.
-So you just run:
-
-```bash
-$ gem install tonic
-$ tonic
-```
-
-It will ask you - do you really want blahblahblah. You say `y` and there is it!
-Will be created branch gh-pages, then tonic checkout you there and remove from there all files.
-Then it will copy tonic-template to this branch and run bundle install.
-
-And you can work with this template like with ordinary tonic-template.
-
-When you want to push your gh-pages branch to github, just write:
-
-```bash
-$ tonic push
-```
-
-Or oldschool:
-
-```bash
-$ git push -f origin gh-pages
-```
-
-Example you can see on [gh-pages for tonic](http://gazay.github.com/tonic)
-
-And what inside template in [gh-pages branch](https://github.com/gazay/tonic/tree/gh-pages)
-
 ## What?
 
-In template used next gems for make it work:
+In tonic used next gems for make it work:
 
 [rake](https://github.com/jimweirich/rake)
 
@@ -127,6 +120,10 @@ In template used next gems for make it work:
 [haml](https://github.com/nex3/haml)
 
 [compass](https://github.com/chriseppstein/compass)
+
+[middleman](https://github.com/middleman/middleman)
+
+[jekyll](https://github.com/mojombo/jekyll)
 
 Lot of code for rakefile of template and for octocat in test page
 I get from one-page project of my friend @ai [easings.net](https://github.com/ai/easings.net)

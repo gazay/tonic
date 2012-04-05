@@ -1,4 +1,12 @@
 source "http://rubygems.org"
 
-# Specify your gem's dependencies in tonic.gemspec
-gemspec
+gem 'rake'
+gem 'fssm'
+
+gem 'haml'
+gem 'slim'
+gem 'compass'
+gem 'coffee-script'
+gem 'therubyracer'
+gem 'sprockets'
+gem 'uglifier'

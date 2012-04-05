@@ -108,6 +108,10 @@ Or oldschool:
 $ git push -f origin gh-pages
 ```
 
+Example you can see on [gh-pages for tonic](http://gazay.github.com/tonic)
+
+And what inside template in [gh-pages branch](https://github.com/gazay/tonic/tree/gh-pages)
+
 ## What?
 
 In template used next gems for make it work:

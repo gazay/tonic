@@ -28,6 +28,7 @@ module Tonic
 
         puts 'Do you really want to create gh-pages branch with tonic? [y/n]'
         if gets.chomp =~ /y/i
+          check_status
           create_branch
           remove_all_files
           Template.create
@@ -38,6 +39,12 @@ module Tonic
       def branch_exists?
         branches = sh('git branch')
         branches.lines.any? { |it| it =~ /gh-pages/ }
+      end
+
+      def check_status
+        unless sh('git status -s').to_s.empty?
+          abort "You have uncommited changes. I don't want to you to loose it."
+        end
       end
 
       # TODO: Later I will think about how to do it through github-gem properly

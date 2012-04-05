@@ -5,5 +5,3 @@ describe Tonic, '#not_working' do
     Tonic::VERSION.should == '0.0.2'
   end
 end
-
-raise 'Build is not ok'

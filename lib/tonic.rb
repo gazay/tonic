@@ -15,7 +15,7 @@ module Tonic
     def deal_with_args(args)
       if want_to_push?(args)
         Tonic::GhPages.push_pages
-      elsif want_gh_pages?
+      elsif want_gh_pages?(args)
         Tonic::GhPages.activate(args[0])
       elsif want_to_create?(args)
         Tonic::Template.create args[1]
@@ -32,7 +32,7 @@ module Tonic
       args[0] == 'push'
     end
 
-    def wand_gh_pages?
+    def want_gh_pages?(args)
       args.empty? or %w(middleman jekyll).include?(args[0])
     end
 

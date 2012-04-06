@@ -28,14 +28,11 @@ module Tonic
           abort 'You shall no pass. First you should delete gh-pages branch'
         end
 
-        puts 'Do you really want to create gh-pages branch with tonic? [y/n]'
-        if gets.chomp =~ /y/i
-          check_status
-          create_branch
-          remove_all_files
-          create template
-          commit_changes
-        end
+        check_status
+        create_branch
+        remove_all_files
+        create template
+        commit_changes
       end
 
       def create(template = nil)

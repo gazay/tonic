@@ -58,7 +58,6 @@ $ gem install tonic
 $ tonic [middleman|jekyll]
 ```
 
-It will ask you - do you really want blahblahblah. You say `y` and there is it!
 Will be created branch gh-pages, then tonic checkout you there and remove from there all (not dot-) files.
 Then it will copy choosen template to this branch and run bundle install if it's needed.
 

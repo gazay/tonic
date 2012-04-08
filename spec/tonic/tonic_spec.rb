@@ -31,19 +31,28 @@ end
 describe Tonic do
   context 'Tonic will' do
 
-    it "do the right stuff with repo" do
+    before :all do
       unless Dir.pwd =~ /spec\/dummy_git_repo/
-        exec 'cd spec/dummy_git_repo; rspec ../../'
-      else
-        Tonic.activate []
-        Dir.glob('*').size.should == 4
-        c = Tonic::Shell.new('git status -s').run.to_s.should == ""
+        command = <<EOF
+          cd spec/dummy_git_repo;\
+          git init;\
+          git add .;\
+          git commit -am 'init commit';\
+          rspec ../../
+EOF
+        exec command
       end
     end
 
-    if Dir.pwd =~ /spec\/dummy_git_repo/
-      after :all do
-        `git checkout master; git branch -D gh-pages`
+    it "do the right stuff with repo" do
+      Tonic.activate []
+      Dir.glob('*').size.should == 4
+      c = Tonic::Shell.new('git status -s').run.to_s.should == ""
+    end
+
+    after :all do
+      if Dir.pwd =~ /spec\/dummy_git_repo/
+        `git checkout master; rm -rf .git`
         exec 'cd ../..'
       end
     end

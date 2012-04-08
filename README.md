@@ -8,14 +8,10 @@ This gem supports [middleman](https://github.com/middleman/middleman)
 and will support in near future [jekyll](https://github.com/mojombo/jekyll) for generate template of your site.
 
 If you want to easily create custom gh-pages for your application,
-and again - want to use for that the same technologies
+and want to use for that sass-compass/haml/coffee/something
 
 THIS GEM TOTALY FOR YOU
 
-If you want to create your simple static application,
-and want to use for that sass-compass/haml/coffee/something
-
-THIS GEM FOR YOU
 
 ## Why?
 
@@ -27,7 +23,7 @@ There a lot of cool static site generators, from jekyll to this one :)
 But no one give to you so simple ui (maybe middleman, but tonic knows how to do gh-pages branch right;)
 
 You can choose with what template you want to develop your site:
-tonic, middleman or jekyll (jekyll support not yet ready)
+tonic, middleman or jekyll (jekyll support not ready yet)
 
 
 ## How?
